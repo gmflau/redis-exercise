@@ -13,7 +13,12 @@ for i in range(1, 101):
 
 ss_list = r.zrevrange(num_ss_key, "0", "-1")
 
+print("Printing the items from a sorted set using zrevrange()")
+count = 0
 for item in ss_list:
-    print(item)
+    count += 1
+    print(item, end=",")
 
+print()
+print("Total number of items => " + str(count))
 r.delete(num_ss_key)

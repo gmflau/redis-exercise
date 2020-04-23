@@ -16,4 +16,3 @@ num_list = r.lrange(num_list_key, "0", "-1")
 for item in num_list:
     print(item)
 
-r.delete(num_list_key)
