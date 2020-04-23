@@ -8,6 +8,7 @@ r = redis.Redis(host="localhost",
 
 num_list_key = "list_1to100"
 
+# O(N) to insert 100 random values
 print("Insert 100 random values into a list")
 count = 0
 for i in range(1, 101):
@@ -22,9 +23,11 @@ print()
 print("Total number inserted into the list (before sorting) => " + str(count))
 
 
+# SORT is O(N+M*log(M))
 print("Let's sort our number in the list")
 r.sort(num_list_key, desc=True, store=num_list_key)
 
+# O(N) to print all the numbers
 num_list = r.lrange(num_list_key, "0", "-1")
 count = 0
 for item in num_list:
